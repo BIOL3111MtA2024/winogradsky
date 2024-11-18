@@ -98,7 +98,9 @@ Repeatedly reading from GoogleDrive can provoke a throttle from Google.
 googlesheets4::gs4_deauth()
 
 #URL or ID of a GoogleSheet readable by anyone (with a link)
-Datasheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=1390393511#gid=1390393511")
+MetaDatasheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=1390393511#gid=1390393511")
+## NOT Working yet## EndPointDatasheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?gid=43314504#gid=43314504")
+
   # googlesheets4::read_sheet has a  "feature" to set the type of columns it can't parse to a list.
   # ggplot/dplyr does not like working with a dataframe of lists.
   # In this case variable column WL is set to a list since some values are numbers, some are strings, some are blank.
