@@ -3,23 +3,27 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-# Project Title
+# Microcosms in Winogradsky Columns
 
 ## Summary
 
-Provide a brief description of the project - 150 words.
+Winogradsky columns are clear cylinders filled with sediment and water (Esteban et al., 2015). When incubated with light, they grow communities of microorganisms with spacial distribution differences (Esteban et al., 2015). Layers in the column are organized by the different metabolic strategies of microorganisms (Esteban et al., 2015). Winogradsky columns are model systems for studying microbial communities. This project seeks to use the columns to investigate the effect of climate change on the microbial community distributions in Sackville, New Brunswick. By collecting sediment from the Sackville Waterfowl park, the effects of salinity and temperature associated with climate change will be monitored over a 4-week period. This will be done visually, and with dissolved oxygen and voltage gradient measurements. It is hypothesized that there will be changes in microbe abundance, diversity, and community composition with climate change. 
 
 ## Highly Qualified Personnel
 
-- Name, Institution, email, ORCID 0000-0000-0000-0000
+- Daytona Evelyn McMackin, Mount Allison University, demcmackin@mta.ca
+- Lindsey Nicole Hood, Mount Allison University, lnhood@mta.ca
+- Douglas A. Campbell, Mount Allison University, dcampbel@mta.ca, ORCID 0000-0001-8996-5463
 
 ## Principle Investigators
 
-- Douglas A. Campbell, Mount Allison University, dcampbel@mta.ca, ORCID 0000-0001-8996-5463
+- Daytona Evelyn McMackin, Mount Allison University, demcmackin@mta.ca
+- Lindsey Nicole Hood, Mount Allison University, lnhood@mta.ca
 
-## Primary Contact  
+## Primary Contacts  
 
-- Douglas A. Campbell, Mount Allison University, dcampbel@mta.ca, ORCID 0000-0001-8996-5463
+- Daytona Evelyn McMackin, Mount Allison University, demcmackin@mta.ca
+- Lindsey Nicole Hood, Mount Allison University, lnhood@mta.ca
 
 ## Data sources
 
@@ -31,34 +35,53 @@ Provide a brief description of the project - 150 words.
 
 ## Keywords
 
-List keywords separated by commas
+Winogradsky column, Climate change, Sea level, Temperature, Oxygen gradients, Voltage gradients, Niches 
 
 ## Additional information and support
 
 - Sensitive Data Flag - Human Participants:  NO
-- Sensitive Data Flag - Indigenous Partnerships: YES or NO
-- Sensitive Data Flag - Government Partnerships: YES or NO
-- Sensitive Data Flag - Industry Partnerships: YES or NO
-- Access Restrictions
+- Sensitive Data Flag - Indigenous Partnerships: NO
+- Sensitive Data Flag - Government Partnerships: NO
+- Sensitive Data Flag - Industry Partnerships: NO
+- Access Restrictions - None
 
 ## Software  
 
-The software (and version) used to create the dataset.  
+For data management, Google sheets was used.
+For photo capture, the camera of a Samsung S23 was used.
+For data analysis, RStudio version 2023.06.01 and R version 4.4.1 were used.
 
 ## Repo content information
 
-Use the space below to summarize the structure of the repository with a decription of each folder, as applicable.
+Use the space below to summarize the structure of the repository with a description of each folder, as applicable.
 
 ### MetaDataCatalog
 URL for MetaDataCatalog, or MetaDataCatalog filename
 example:
 https://docs.google.com/spreadsheets/d/1rlj03Q_wq83qlyiY7mXq8BK6C-L0Ko799JsyhfA1TGI/edit#gid=0
 Use standard variable names for MetaDataCatalog
-```{r}
+##Load Packages
+```{r packages, include = FALSE}
 
+library(tidyverse) #core packages from Tidyverse
+library(googledrive) #access to GoogleDrive
+library(googlesheets4)
 ```
 
-### Data Dictionary
+##Importing MetaData
+```{r load Catalog direct from googlesheet, results = "hide"}
+googlesheets4::gs4_deauth()
+
+MetaDatasheet <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=1390393511#gid=1390393511")
+```
+
+### Importing Data Dictionary
+```{r load Catalog direct from googlesheet, results = "hide}
+googlesheets4::gs4_deauth()
+
+DataDictionary <- googlesheets4::range_read("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=1422712698#gid=1422712698")
+```
+
 URL for Data Dictionary, or Data Dictionary filename
 example:
 https://docs.google.com/spreadsheets/d/1KzHZETwASnt4XW69HYufHwlWaE_E-yHkLDqetiOYqBg/edit#gid=671854404
@@ -92,3 +115,4 @@ Project notes, other documentation, etc.
 Output from knit .Rmd, Figures and tables produced from analysis.
 Do not generate swarms of superfluous data exploration figures.
 
+## Bibliography
