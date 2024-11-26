@@ -1,0 +1,41 @@
+---
+title: "Oxygen_gradients"
+output: html_notebook
+---
+
+# Introduction
+
+This rmd. file imports oxygen data from Google sheet
+Data is used to plot a oxygen gradient map of the winogradsky column 
+
+#Loading Packages 
+
+```{r loading packages}
+library(tidyverse) 
+library(googledrive) 
+library(googlesheets4)
+library(ggplot2)
+```
+
+#Importing from google sheet
+
+```{r load Catalog direct from googlesheet cleandata_oxygen, results = "hide}
+
+googlesheets4::gs4_deauth()
+
+CleanData_Oxygen <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=842906991#gid=842906991", "CleanData_Oxygen")
+```
+#Oxygen Gradient Plot
+
+```{r}
+ggplot(data = CleanData_Oxygen) +
+geom_point(aes(y = Depth_cm, x = DO_mg_L)) +
+  geom_path(aes(y = Depth_cm, x = DO_mg_L)) +
+  facet_wrap(vars(unlist(Sample)))
+```
+
+
+
+
+
+
