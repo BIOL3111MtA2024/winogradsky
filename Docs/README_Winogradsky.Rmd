@@ -7,7 +7,7 @@ output: html_notebook
 
 ## Summary
 
-Winogradsky columns are clear cylinders filled with sediment and water (Esteban et al., 2015). When incubated with light, they grow communities of microorganisms with spacial distribution differences (Esteban et al., 2015). Layers in the column are organized by the different metabolic strategies of microorganisms (Esteban et al., 2015). Winogradsky columns are model systems for studying microbial communities. This project seeks to use the columns to investigate the effect of climate change on the microbial community distributions in Sackville, New Brunswick. By collecting sediment from the Sackville Waterfowl park, the effects of salinity and temperature associated with climate change will be monitored over a 4-week period. This will be done visually, and with dissolved oxygen and voltage gradient measurements. It is hypothesized that there will be changes in microbe abundance, diversity, and community composition with climate change. 
+Winogradsky columns are clear cylinders filled with sediment and water (Esteban et al., 2015). When incubated with light, they grow communities of microorganisms with spacial distribution differences (Esteban et al., 2015). Layers in the column are organized by the different metabolic strategies of microorganisms (Esteban et al., 2015). Winogradsky columns are model systems for studying microbial communities. This project seeks to use the columns to investigate the effect of climate change on the microbial community distributions in Sackville, New Brunswick. By collecting sediment from the Sackville Waterfowl park, the effects of salinity and temperature associated with climate change will be monitored over a 4-week period. This will be done visually, and with dissolved oxygen and voltage gradient measurements. It is hypothesized that there will be changes in microbe abundance, diversity, and community composition with climate change, which will be simulated by changes in temperature and salinity. 
 
 ## Highly Qualified Personnel
 
@@ -60,6 +60,7 @@ URL for MetaDataCatalog, or MetaDataCatalog filename
 example:
 https://docs.google.com/spreadsheets/d/1rlj03Q_wq83qlyiY7mXq8BK6C-L0Ko799JsyhfA1TGI/edit#gid=0
 Use standard variable names for MetaDataCatalog
+
 ##Load Packages
 ```{r packages, include = FALSE}
 
@@ -91,7 +92,7 @@ Do not create swarms of superfluous sub-folders.
 
 googlesheets4::gs4_deauth()
 
-RawData <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=1422712698#gid=1422712698", "EndpointRawData")
+RawData <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=1422712698#gid=1422712698", "RawData")
 ```
 
 
