@@ -19,7 +19,7 @@ library(knitr)
 
 #Importing from google sheet
 
-```{r load CleanOxygenData direct from googlesheet}
+```{r load CleanVoltageData direct from googlesheet}
 
 googlesheets4::gs4_deauth()
 
@@ -28,4 +28,35 @@ kable(CleanData_Voltage)
 ```
 
 #Voltage Gradient Plot
+
+```{r Voltage Gradients in water at 10 seconds}
+
+ggplot(data = CleanData_Voltage) +
+geom_point(aes(y = Depth_cm, x = Voltage_Water_10s)) + labs( title= "Voltage Gradient in water at 10 seconds", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
+  facet_wrap(vars(unlist(Sample)))
+
+
+
+```
+
+```{r Voltage Gradients in water at maximum}
+
+ggplot(data = CleanData_Voltage) +
+geom_point(aes(y = Depth_cm, x = Voltage_Water_Max)) + labs( title= "Voltage Gradient in water at maximum", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
+  facet_wrap(vars(unlist(Sample)))
+```
+
+```{r Voltage Gradients grounded on tap at 10 seconds}
+
+ggplot(data = CleanData_Voltage) +
+geom_point(aes(y = Depth_cm, x = Voltage_Tap_10s)) + labs( title= "Voltage Gradient grounded to tap at 10 seconds", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
+  facet_wrap(vars(unlist(Sample)))
+```
+```{r Voltage Gradients grounded on tap at maximum}
+
+ggplot(data = CleanData_Voltage) +
+geom_point(aes(y = Depth_cm, x = Voltage_Tap_Max)) + labs( title= "Voltage Gradient in water at 10 seconds", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
+  facet_wrap(vars(unlist(Sample)))
+
+```
 

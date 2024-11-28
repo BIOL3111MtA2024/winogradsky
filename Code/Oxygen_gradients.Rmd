@@ -29,7 +29,7 @@ kable(CleanData_Oxygen)
 ```
 #Oxygen Gradient Plot
 
-```{r}
+```{r Oxygen gradients}
 ggplot(data = CleanData_Oxygen) +
 geom_point(aes(y = Depth_cm, x = DO_µg_L)) + labs( title= "Oxygen Gradients", caption= "Figure X. Dissolved Oxygen (DO) (µg/L) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
   #geom_path(aes(y = Depth_cm, x = DO_µg_L)) +
