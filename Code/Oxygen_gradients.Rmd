@@ -143,5 +143,8 @@ linear_fits <- linear_fits %>%
   kable(digits=3)
 
 ```
-
+# Can only import one image at a time right now, we could choose some notable ones to display?
+```{r echo=FALSE, out.width="100%", fig.cap="My Image"}
+knitr::include_graphics("../docs/SlidePhotos/1001_6.6_C.jpg")
+```
 

@@ -27,5 +27,5 @@ Slide_Photos <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/
 
 kable(Slide_Photos) 
 ```
-```
+
 
