@@ -1,12 +1,13 @@
 ---
-title: "Oxygen_gradients"
+title: "Oxygen&Voltage_gradients"
 output: html_notebook
 ---
 
 # Introduction
 
-This rmd. file imports oxygen data from Google sheet
-Data is used to plot a oxygen gradient map of the winogradsky column 
+This rmd. file imports oxygen and voltage data from Google sheet
+Data is used to plot a oxygen and voltage gradient map of the winogradsky column 
+Exponential and linear models were used to analyze data
 
 #Loading Packages 
 
@@ -18,6 +19,7 @@ library(googlesheets4)
 library(knitr)
 library(minpack.lm)
 library(broom)
+library(purrr)
 library(lme4)
 ```
 

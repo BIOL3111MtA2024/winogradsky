@@ -119,4 +119,7 @@ Project notes, other documentation, etc.
 Output from knit .Rmd, Figures and tables produced from analysis.
 Do not generate swarms of superfluous data exploration figures.
 
+
+
 ## Bibliography
+Esteban, D. J., Hysa, B., & Bartow-McKenney, C. (2015). Temporal and Spatial Distribution of the Microbial Community of Winogradsky Columns. PLoS ONE, 10(8), e0134588. https://doi.org/10.1371/journal.pone.0134588
