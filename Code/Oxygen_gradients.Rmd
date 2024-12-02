@@ -99,6 +99,21 @@ unnest(cols = c(DecayTidy)) |>
   pivot_wider(id_cols = Sample, names_from = term, values_from = c(estimate, std.error, p.value)) |>
   kable()
 ```
+```{r Plotting Voltage Gradients in water at 10 seconds}
 
+ggplot(data = Gradients) +
+  geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) + 
+  facet_grid(cols = vars(Sample)) + 
+  theme_bw()
+```
 
+```{r Plotting With a linear fit}
+Gradients %>%
+  ggplot() +
+ geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) + 
+  geom_smooth(aes( x = Depth_cm, y = Voltage_Water_10s), method = "lm", se=FALSE) +
+  #facet_wrap(vars((Sample))) +
+facet_grid(cols = vars(Sample)) + 
+  theme_bw()
+```
 

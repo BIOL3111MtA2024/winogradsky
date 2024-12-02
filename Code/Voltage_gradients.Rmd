@@ -4,8 +4,9 @@ output: html_document
 ---
 # Introduction
 
-This rmd. file imports voltage data from Google sheet
-Data is used to plot a voltage gradient map of the winogradsky column 
+This rmd. file imports voltage data from Google sheet.
+Data is used to plot a voltage gradient map of the winogradsky column.
+These plots were exploratory, and used in initially vizualizing the data.
 
 #Loading Packages 
 
@@ -13,7 +14,7 @@ Data is used to plot a voltage gradient map of the winogradsky column
 library(tidyverse) 
 library(googledrive) 
 library(googlesheets4)
-library(ggplot2)
+#library(ggplot2)
 library(knitr)
 ```
 
@@ -23,7 +24,8 @@ library(knitr)
 
 googlesheets4::gs4_deauth()
 
-CleanData_Voltage <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=842906991#gid=842906991", "CleanData_Voltage") 
+CleanData_Voltage <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=842906991#gid=842906991", "CleanData_Voltage")  |>
+  mutate(Sample = as.character(Sample))
 kable(CleanData_Voltage)
 ```
 
@@ -32,31 +34,37 @@ kable(CleanData_Voltage)
 ```{r Voltage Gradients in water at 10 seconds}
 
 ggplot(data = CleanData_Voltage) +
-geom_point(aes(y = Depth_cm, x = Voltage_Water_10s)) + labs( title= "Voltage Gradient in water at 10 seconds", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
-  facet_wrap(vars(unlist(Sample)))
-
-
+geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) + labs( title= "Voltage Gradient in water at 10 seconds", caption= "Figure 1. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm).
+Values were recorded after 10 seconds of measurement. The column water was used as a 
+ground.") + theme(plot.caption= element_text(size = 12, hjust=0)) +
+  facet_wrap(vars((Sample))) 
 
 ```
 
 ```{r Voltage Gradients in water at maximum}
 
 ggplot(data = CleanData_Voltage) +
-geom_point(aes(y = Depth_cm, x = Voltage_Water_Max)) + labs( title= "Voltage Gradient in water at maximum", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
-  facet_wrap(vars(unlist(Sample)))
+geom_point(aes(x = Depth_cm, y = Voltage_Water_Max)) + labs( title= "Voltage Gradient in water at maximum", caption= "Figure 2. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm).
+Values were recorded as the maximum (+/-) value observed during 10 seconds of 
+measurement. The column water was used as a ground.") + theme(plot.caption= element_text(size = 12, hjust=0)) +
+  facet_wrap(vars(unlist(Sample))) 
 ```
 
 ```{r Voltage Gradients grounded on tap at 10 seconds}
 
 ggplot(data = CleanData_Voltage) +
-geom_point(aes(y = Depth_cm, x = Voltage_Tap_10s)) + labs( title= "Voltage Gradient grounded to tap at 10 seconds", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
-  facet_wrap(vars(unlist(Sample)))
+geom_point(aes(x = Depth_cm, y = Voltage_Tap_10s)) + labs( title= "Voltage Gradient grounded to tap at 10 seconds", caption= "Figure 3. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm).
+Values were recorded after 10 seconds of measurement. The metal tap was used as a ground.") + theme(plot.caption= element_text(size = 12, hjust=0.5)) +
+  facet_wrap(vars(unlist(Sample))) 
 ```
+
 ```{r Voltage Gradients grounded on tap at maximum}
 
 ggplot(data = CleanData_Voltage) +
-geom_point(aes(y = Depth_cm, x = Voltage_Tap_Max)) + labs( title= "Voltage Gradient in water at 10 seconds", caption= "Figure X. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm)") + theme(plot.caption= element_text(size = 11, hjust=0)) +
-  facet_wrap(vars(unlist(Sample)))
+geom_point(aes(x = Depth_cm, y = Voltage_Tap_Max)) + labs( title= "Voltage Gradient grounded to tap at maximum", caption= "Figure 4. Voltage (mv) measured in four Winogradsky colums at 5 depths (cm).
+Values were recorded as the maximum (+/-) value observed during 10 seconds of 
+measurement. The metal tap was used as a ground.") + theme(plot.caption= element_text(size = 12, hjust=0)) +
+  facet_wrap(vars(unlist(Sample))) 
 
 ```
 
