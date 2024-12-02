@@ -102,6 +102,9 @@ unnest(cols = c(DecayTidy)) |>
   pivot_wider(id_cols = Sample, names_from = term, values_from = c(estimate, std.error, p.value)) |>
   kable()
 ```
+
+# Voltage Gradient Plot
+
 ```{r Plotting Voltage Gradients in water at 10 seconds}
 
 ggplot(data = Gradients) +
@@ -110,15 +113,35 @@ ggplot(data = Gradients) +
   theme_bw()
 ```
 
+
 ```{r Plotting With a linear fit}
-Gradients %>%
-  ggplot() +
- geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) + 
-  geom_smooth(aes( x = Depth_cm, y = Voltage_Water_10s), method = "lm", se=FALSE) +
-  #facet_wrap(vars((Sample))) +
-facet_grid(cols = vars(Sample)) + 
+
+  Linear_fit <- CleanData_Voltage %>% 
+  group_by(Sample) %>%
+  group_modify(~ {
+
+  linear <- lm(Voltage_Water_10s ~ Depth_cm, data = .x, na.action = na.exclude)
+  augment(linear, data = .x)}) %>%
+  ungroup()
+
+
+Linear_fit |>   
+  ggplot(aes(x = Depth_cm, y = Voltage_Water_10s)) +
+  geom_point() +
+  geom_line(aes(y = .fitted)) +
+  geom_segment(aes(xend = Depth_cm, yend = .fitted), color = "red") +
+  facet_grid(cols = vars(unlist(Sample))) +
   theme_bw()
+                
+  #, method = "lm", se=FALSE) +
+  #facet_wrap(vars((Sample))) +
+  #facet_grid(cols = vars(Sample)) +
+  #theme_bw()
+
+
 ```
+
+
 ```{r Generating the linear model for the plots}
  # Fit the linear model grouped by Sample
 linear_fits <- Gradients %>%
@@ -145,6 +168,8 @@ linear_fits <- linear_fits %>%
   kable(digits=3)
 
 ```
+
+
 # Can only import one image at a time right now, we could choose some notable ones to display?
 ```{r echo=FALSE, out.width="100%", fig.cap="My Image"}
 knitr::include_graphics("../docs/SlidePhotos/1001_6.6_C.jpg")
