@@ -58,8 +58,8 @@ Gradients <- left_join(x = CleanData_Oxygen, y = CleanData_Voltage, by = c("Samp
 ggplot(data = CleanData_Oxygen) +
 geom_point(aes(y = DO_µg_L, x = Depth_cm)) + 
   #scale_y_reverse() +
-  #labs( title= "Oxygen Gradients", caption= "Figure X. Dissolved Oxygen (DO) (µg/L) measured in four Winogradsky colums at 5 depths (cm)") 
-  #+ theme(plot.caption= element_text(size = 11, hjust=0)) +
+  labs( title= "Oxygen Gradients", caption= "Figure 1. Dissolved Oxygen (DO) (µg/L) measured in four Winogradsky colums at 5 depths (cm)") +
+  #theme(plot.caption= element_text(size = 12, hjust=5)) +
   #geom_path(aes(y = Depth_cm, x = DO_µg_L)) +
   facet_grid(cols = vars(Sample)) +
   theme_bw()
@@ -91,6 +91,7 @@ O2_nest |>
   geom_point(aes(x = Depth_cm, y = DO_µg_L)) +
   geom_line(aes(x = Depth_cm, y = .fitted)) +
   geom_point(aes(x = Depth_cm, y = .resid), colour = "red") +
+  labs( title= "Oxygen Decay Fits", caption= "Figure 2. Dissolved Oxygen (DO) (µg/L) measured in four Winogradsky colums at 5 depths (cm), fitted to an exponential decay model with residuals") +
   facet_grid(cols = vars(unlist(Sample))) +
   theme_bw()
 ```
@@ -110,6 +111,7 @@ unnest(cols = c(DecayTidy)) |>
 
 ggplot(data = Gradients) +
   geom_point(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) + 
+  labs( title= "Voltage Gradients", caption= "Figure 3. Voltage in water at 10 seconds (mv) measured in four Winogradsky colums at 5 depths (cm)") +
   facet_grid(cols = vars(Sample)) + 
   theme_bw()
 ```
@@ -133,6 +135,7 @@ ggplot(data = Gradients) +
     #Showing residuals
     #geom_point(aes(x = Depth_cm, y = .resid), colour = "red") +
     geom_segment(aes(xend = Depth_cm, yend = .fitted), color = "red") +
+    labs( title= "Voltage Gradient Fits", caption= "Figure 4. Voltage in water at 10 seconds (mv) measured in four Winogradsky colums at 5 depths (cm), fitted to a linear model with residuals") +
     facet_grid(cols = vars(unlist(Sample))) +
     theme_bw()
 
@@ -168,11 +171,13 @@ Linear_fit_param |>
 
     Oxygen <- ggplot(data = Gradients) +
       geom_point(aes(x = Depth_cm, y = DO_µg_L)) +
+   labs( title= "Oxygen Gradient Comparison", caption= "Figure 5. Dissolved Oxygen (DO) (µg/L) measured in four Winogradsky colums at 5 depths (cm)") +
       facet_grid(cols = vars(Sample)) + 
       theme_bw()
 
     Voltage <- ggplot(data = Gradients) +
       geom_point(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) +
+      labs( title= "Voltage Gradient Comparison", caption= "Figure 6. Voltage in water at 10 seconds (mv) measured in four Winogradsky colums at 5 depths (cm)") +
       facet_grid(cols = vars(Sample)) + 
       theme_bw()
       
@@ -187,6 +192,7 @@ Linear_fit_param |>
 ggplot(data = Gradients) +
       geom_point(aes(x = DO_µg_L, y = Voltage_Water_10s_mv)) +
       geom_smooth(aes(x = DO_µg_L, y = Voltage_Water_10s_mv), method = "lm") +
+  labs( title= "Oxygen and Voltage Gradient Relationship", caption= "Figure 7. Dissolved Oxygen (DO) (µg/L) (x) and Voltage (y) (mv) measured in four Winogradsky colums at 5 depths (cm)") +
       facet_grid(cols = vars(Sample)) + 
       theme_bw()
 
