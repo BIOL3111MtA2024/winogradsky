@@ -130,7 +130,8 @@ ggplot(data = Gradients) +
     ggplot(aes(x = Depth_cm, y = Voltage_Water_10s)) +
     geom_point() +
     geom_line(aes(y = .fitted)) +
-    #Showing residuals 
+    #Showing residuals
+    #geom_point(aes(x = Depth_cm, y = .resid), colour = "red") +
     geom_segment(aes(xend = Depth_cm, yend = .fitted), color = "red") +
     facet_grid(cols = vars(unlist(Sample))) +
     theme_bw()
