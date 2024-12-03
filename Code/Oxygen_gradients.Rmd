@@ -1,15 +1,12 @@
 ---
 title: "Oxygen & Voltage Gradients"
-output:
-  html_document:
-    df_print: paged
+output: html_notebook
 ---
 
 # Introduction
 
 This rmd. file imports oxygen and voltage data from Google sheet
-Data is used to plot oxygen and voltage gradient maps of the winogradsky column 
-Exponential and linear models were used to analyze data
+Data is used to plot oxygen and voltage gradient maps of the winogradsky column, exponential and linear models were used to analyze data
 
 ## Loading Packages 
 
