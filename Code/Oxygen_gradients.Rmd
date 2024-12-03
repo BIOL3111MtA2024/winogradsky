@@ -9,7 +9,7 @@ This rmd. file imports oxygen and voltage data from Google sheet
 Data is used to plot a oxygen and voltage gradient map of the winogradsky column 
 Exponential and linear models were used to analyze data
 
-#Loading Packages 
+## Loading Packages 
 
 ```{r loading packages}
 library(tidyverse) 
@@ -24,7 +24,7 @@ library(lme4)
 library(patchwork)
 ```
 
-#Importing from google sheet
+## Importing from google sheet
 
 ```{r load CleanOxygenData direct from googlesheet}
 
@@ -52,7 +52,7 @@ Gradients <- left_join(x = CleanData_Oxygen, y = CleanData_Voltage, by = c("Samp
 ```
 
 
-#Oxygen Gradient Plot
+## Oxygen Gradient Plot
 
 ```{r Oxygen gradients}
 ggplot(data = CleanData_Oxygen) +
@@ -104,12 +104,12 @@ unnest(cols = c(DecayTidy)) |>
   kable()
 ```
 
-# Voltage Gradient Plot
+## Voltage Gradient Plot
 
 ```{r Plotting Voltage Gradients in water at 10 seconds}
 
 ggplot(data = Gradients) +
-  geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) + 
+  geom_point(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) + 
   facet_grid(cols = vars(Sample)) + 
   theme_bw()
 ```
@@ -121,13 +121,13 @@ ggplot(data = Gradients) +
   group_by(Sample) %>%
   group_modify(~ {
 
-  linear <- lm(Voltage_Water_10s ~ Depth_cm, data = .x, na.action = na.exclude)
+  linear <- lm(Voltage_Water_10s_mv ~ Depth_cm, data = .x, na.action = na.exclude)
   augment(linear, data = .x)}) %>%
   ungroup()
 
 
   Linear_fit |>   
-    ggplot(aes(x = Depth_cm, y = Voltage_Water_10s)) +
+    ggplot(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) +
     geom_point() +
     geom_line(aes(y = .fitted)) +
     #Showing residuals
@@ -140,33 +140,31 @@ ggplot(data = Gradients) +
 ```
 
 
-```{r Generating the linear model for the plots}
+```{r Examining linear fit parameters}
  
- Linear_fit_results <- Linear_fit |>
-   group_by(Sample) |>
-   group_modify(~ {
-    linear_model <- lm(Voltage_Water_10s ~ Depth_cm, data = .x)
+Linear_fit_param <- Linear_fit |>
+  group_by(Sample) |>
+  group_modify(~ {
+    linear_model <- lm(Voltage_Water_10s_mv ~ Depth_cm, data = .x)
     tidy_model <- tidy(linear_model)  
-    tidy_model$Sample <- unique(.x$Sample)  
+    tidy_model$Sample <- unique(.x$Sample)  # Ensure Sample column is added
     return(tidy_model)  
-   }) |>
-  ungroup() |>
-  # Filter for 'Depth_cm' coefficient (we are examining Voltage in terms of Depth_cm)
-  filter(term == "Depth_cm")  
+  }) |>
+  ungroup() 
 
-# Selecting to include Sample, estimate of slope, std.error, and p.value in table output
-Linear_fit_results |>
-  select(Sample, estimate, std.error, p.value) 
+Linear_fit_param <- Linear_fit_param |>
+  mutate(term = str_replace(term, "\\(Intercept\\)", "I"))
+
+Linear_fit_param |>
+  select(-c(statistic)) |>
+  pivot_wider(id_cols = Sample, names_from = term, values_from = c(estimate, std.error, p.value)) |>
+  kable()
  
-#Displaying the table and specifying sig digits shown
- Linear_fit |>
-  kable(digits=3)
-
 ```
 
-## Oxygen vs Voltage Graph
+## Oxygen and Voltage Gradients
 
-```{r oxygen vs voltage}
+```{r oxygen and voltage gradients}
 
     Oxygen <- ggplot(data = Gradients) +
       geom_point(aes(x = Depth_cm, y = DO_µg_L)) +
@@ -174,7 +172,7 @@ Linear_fit_results |>
       theme_bw()
 
     Voltage <- ggplot(data = Gradients) +
-      geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) +
+      geom_point(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) +
       facet_grid(cols = vars(Sample)) + 
       theme_bw()
       
@@ -184,10 +182,4 @@ Linear_fit_results |>
 ```
 
 
-
-
-# Can only import one image at a time right now, we could choose some notable ones to display?
-```{r echo=FALSE, out.width="100%", fig.cap="My Image"}
-knitr::include_graphics("../docs/SlidePhotos/1001_6.6_C.jpg")
-```
 

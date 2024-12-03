@@ -31,7 +31,7 @@ Slide_Photos <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/
 
 kable(Slide_Photos) 
 ```
-
+## Displaying Endpoint images of Winogradsky columns
 ```{r Displaying images of EndPoint Winogradsky columns}
 
 img1 <- image_read("../Docs/ColumnPhotos/20241029_1001.jpg")  
@@ -69,6 +69,35 @@ mtext("1004", side = 1, line = 0.5, cex = 1)
 par(mfrow = c(1, 1))
 
 ```
+## Slides taken from: Sample, Depth_cm, and Classroom (C) or Window (W) side (for 1001)
+
+```{r Displaying images of Notable Slides}
+
+slide1 <- image_read("../Docs/SlidePhotos/1001_0_W.jpg")  
+slide2 <- image_read("../Docs/SlidePhotos/1001_6.7_W.jpg")
+slide3 <- image_read("../Docs/SlidePhotos/1001_10.8_C.jpg")
+slide4 <- image_read("../Docs/SlidePhotos/1004_13.1.jpg")
+
+# Open a plotting window for a grid of images
+par(mfrow = c(2, 2),          
+    mar = c(2, 1, 2, 1),      # Margins (bottom, left, top, right)
+    oma = c(0, 0, 0, 0))      # Outer margins (extra space at the bottom for captions)
+
+# Plot each image with a caption
+plot(as.raster(slide1))
+mtext("1001_0_W", side = 1, line = 0.5, cex = 1)  # Adjust line for spacing
+plot(as.raster(slide2))
+mtext("1001_6.7_W", side = 1, line = 0.5, cex = 1)
+plot(as.raster(slide3))
+mtext("1001_10.8_C", side = 1, line = 0.5, cex = 1)
+plot(as.raster(slide4))
+mtext("1004_13.1", side = 1, line = 0.5, cex = 1)
+
+# Reset plotting layout
+par(mfrow = c(1, 1))
+
+```
+
 
 
 
