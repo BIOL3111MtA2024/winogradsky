@@ -14,6 +14,10 @@ library(tidyverse)
 library(googledrive) 
 library(googlesheets4)
 library(knitr)
+library(grid)
+library(gridExtra)
+library(jpeg)
+library(magick)
 ```
 
 #Importing from google sheet
@@ -27,5 +31,44 @@ Slide_Photos <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/
 
 kable(Slide_Photos) 
 ```
+
+```{r Displaying images of EndPoint Winogradsky columns}
+
+img1 <- image_read("../Docs/ColumnPhotos/20241029_1001.jpg")  
+img2 <- image_read("../Docs/ColumnPhotos/20241029_1001_4.jpg")
+img3 <- image_read("../Docs/ColumnPhotos/20241029_1002.jpg")
+img4 <- image_read("../Docs/ColumnPhotos/20241029_1003_1.jpg")
+img5 <- image_read("../Docs/ColumnPhotos/20241029_1004_1.jpg")
+
+# Rotate if needed
+img1 <- image_rotate(img1, 90)
+img2 <- image_rotate(img2, 90)
+img3 <- image_rotate(img3, 90)
+img4 <- image_rotate(img4, 90)
+img5 <- image_rotate(img5, 90)
+
+# Open a plotting window for a 5 x 1 grid of images
+par(mfrow = c(1, 5),          
+    mar = c(2, 0.5, 2, 0.5),      # Margins (bottom, left, top, right)
+    oma = c(0, 0, 1, 0))      # Outer margins (extra space at the bottom for captions)
+
+# Plot each image with a caption
+plot(as.raster(img1))
+mtext("1001_C", side = 1, line = 0.5, cex = 1)  # Adjust line for spacing
+plot(as.raster(img2))
+mtext("1001_W", side = 1, line = 0.5, cex = 1)
+plot(as.raster(img3))
+mtext("1002", side = 1, line = 0.5, cex = 1)
+plot(as.raster(img4))
+mtext("1003", side = 1, line = 0.5, cex = 1)
+plot(as.raster(img5))
+mtext("1004", side = 1, line = 0.5, cex = 1)
+
+
+# Reset plotting layout
+par(mfrow = c(1, 1))
+
+```
+
 
 
