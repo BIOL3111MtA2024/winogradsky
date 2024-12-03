@@ -11,7 +11,7 @@
 
 
 
-<title>R Notebook</title>
+<title>README_Winogradsky</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -2836,7 +2836,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">R Notebook</h1>
+<h1 class="title toc-ignore">README_Winogradsky</h1>
 
 </div>
 
@@ -2874,11 +2874,16 @@ water was replaced with either seawater collected from a local beach, or
 artificial seawater prepared in the laboratory. Three of four columns
 were kept in a 24 degree celcius incubator with a 12:12 day:night cycle,
 and the fourth remained at room temperature in a window exposed to
-natural light. Thus, the four treatment groups were: 1) Waterfowl Park
-sediment and water at room temperature ( ~ 20 °C) 2) Waterfowl Park
-sediment and water (24°C) 3) Waterfowl Park sediment with addition of
-seawater (24°C) 4) Waterfowl Park sediment with addition of artificail
-seawater (24°C)</p>
+natural light.</p>
+<p>Thus, the four treatment groups were:</p>
+<ol style="list-style-type: decimal">
+<li>Waterfowl Park sediment and water at room temperature ( ~ 20
+°C)</li>
+<li>Waterfowl Park sediment and water (24°C)</li>
+<li>Waterfowl Park sediment with addition of seawater (24°C)</li>
+<li>Waterfowl Park sediment with addition of artificail seawater
+(24°C)</li>
+</ol>
 <p>The conditions were based off the Representative Concentration
 Pathway 8.5 (RCP) modeled by the Intergovernmental Panel on Climate
 Change. This scenario states that by 2100, sea levels will have risen by
@@ -2961,8 +2966,12 @@ there are separate rmd. for each analysis.</p>
 <h3>MetaDataCatalog</h3>
 <p>URL for MetaDataCatalog, or MetaDataCatalog filename example: <a href="https://docs.google.com/spreadsheets/d/1rlj03Q_wq83qlyiY7mXq8BK6C-L0Ko799JsyhfA1TGI/edit#gid=0" class="uri">https://docs.google.com/spreadsheets/d/1rlj03Q_wq83qlyiY7mXq8BK6C-L0Ko799JsyhfA1TGI/edit#gid=0</a>
 Use standard variable names for MetaDataCatalog</p>
-<p>##Load Packages</p>
-<p>##Importing MetaData</p>
+</div>
+<div id="load-packages" class="section level3">
+<h3>Load Packages</h3>
+</div>
+<div id="importing-metadata" class="section level3">
+<h3>Importing MetaData</h3>
 <pre class="r"><code>googlesheets4::gs4_deauth()
 
 MetaDatasheet &lt;- googlesheets4::read_sheet(&quot;https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&amp;gid=1390393511#gid=1390393511&quot;)</code></pre>
@@ -3009,52 +3018,62 @@ qualitative analysis</p>
 <h3>Output</h3>
 <p>Output from knit .Rmd, Figures and tables produced from analysis. Do
 not generate swarms of superfluous data exploration figures.</p>
-<p>###Discussion</p>
-<p>#Voltage and Oxygen Voltage and oxygen show a relationship in
-microbial communities (Christwardana et al., 2021). The relationship has
-been seen to be positively exponentially proportional between the two
-factors (Christwardana et al., 2021). We found a negative relationship
-between voltage and oxygen for 1001_W and 1002, and no significant
-relationship in any of the other columns. We would predict a positive
-relationship in 1003 and 1004, due to seawater being a good conductor in
-comparison to freshwater, increasing the voltage (Christwardana et al.,
-2021). However, examining the data points for column 1004 in particular
-does not seem to show an expected linear relationship– some points are
+</div>
+</div>
+<div id="discussion" class="section level2">
+<h2>Discussion</h2>
+<div id="voltage-and-oxygen" class="section level3">
+<h3>Voltage and Oxygen</h3>
+<p>Voltage and oxygen show a relationship in microbial communities
+(Christwardana et al., 2021). The relationship has been seen to be
+positively exponentially proportional between the two factors
+(Christwardana et al., 2021). We found a negative relationship between
+voltage and oxygen for 1001_W and 1002, and no significant relationship
+in any of the other columns. We would predict a positive relationship in
+1003 and 1004, due to seawater being a good conductor in comparison to
+freshwater, increasing the voltage (Christwardana et al., 2021).
+However, examining the data points for column 1004 in particular does
+not seem to show an expected linear relationship– some points are
 clearly absent in the middle. This could be caused by the variability in
 the voltage measurements, and the differences in the relationship
 between depth and oxygen (potentially in two phases) and depth and
 voltage (linear relationship) in column 1004. In contrast, the 0 slope
 of voltage in all other columns likely makes predicting a relationship
 between voltage and oxygen difficult.</p>
-<p>#Niches Over the course of the four week period, the microbial
-community shifted. This is due to niche differences between different
-microbes (Esteban et al., 2015). Due to increases in depth, and
-therefore light, oxygen, and voltage, communities change according to
-depth (Esteban et al., 2015). Roughly, the surface sees a higher
-occurrence of cyanobacteria and other phytoplankton that rely on high
-light levels for photosynthesis. Below that, heterotrophic bacteria use
-the byproducts of photosynthesis to fuel their metabolism, which causes
-a chain reaction between layers in the Winogradsky column. As oxygen is
-finally used up in the bottom layers, sulfate-reducing bacteria take
-over, surviving anoxic conditions.In 1001 especially, the layers are
-visible in the high light side. This could potentially be caused by the
-differences in light treatment for the 1001 column. While the other
-three columns were in identical light conditions, 1001 had high light
-(window) and low light (classroom) sides. Differences in layers as well
-as in microbes visible in slides were found qualitatively between 1001_W
-and 1001_C. This may suggest that light was an important factor
-affecting community composition, even within the same temperature and
-salinity treatment.</p>
-<p>#Microbial Diversity under Climate Change Between our freshwater and
-seawater conditions, there were some obvious changes. In the seawater
-condition, we saw: -Iron come out of solution -A loss a diversity -A
-loss of an active microbial community in the water column -A darkening
-of the sediment</p>
-<p>Between the temperature conditions, we saw: -A decrease in microbial
-diversity, even in the other freshwater condition -A lack of
-cyanobacterial/green photosynthetic growth, as seen with the sole
-occurrence of diatoms in 1001 -An increase in orange growth, perhaps
-iron-oxidizing bacteria</p>
+</div>
+<div id="niches" class="section level3">
+<h3>Niches</h3>
+<p>Over the course of the four week period, the microbial community
+shifted. This is due to niche differences between different microbes
+(Esteban et al., 2015). Due to increases in depth, and therefore light,
+oxygen, and voltage, communities change according to depth (Esteban et
+al., 2015). Roughly, the surface sees a higher occurrence of
+cyanobacteria and other phytoplankton that rely on high light levels for
+photosynthesis. Below that, heterotrophic bacteria use the byproducts of
+photosynthesis to fuel their metabolism, which causes a chain reaction
+between layers in the Winogradsky column. As oxygen is finally used up
+in the bottom layers, sulfate-reducing bacteria take over, surviving
+anoxic conditions.In 1001 especially, the layers are visible in the high
+light side. This could potentially be caused by the differences in light
+treatment for the 1001 column. While the other three columns were in
+identical light conditions, 1001 had high light (window) and low light
+(classroom) sides. Differences in layers as well as in microbes visible
+in slides were found qualitatively between 1001_W and 1001_C. This may
+suggest that light was an important factor affecting community
+composition, even within the same temperature and salinity
+treatment.</p>
+</div>
+<div id="microbial-diversity-under-climate-change" class="section level3">
+<h3>Microbial Diversity under Climate Change</h3>
+<p>Between our freshwater and seawater conditions, there were some
+obvious changes. In the seawater condition, we saw:</p>
+<p>-Iron come out of solution -A loss a diversity -A loss of an active
+microbial community in the water column -A darkening of the sediment</p>
+<p>Between the temperature conditions, we saw:</p>
+<p>-A decrease in microbial diversity, even in the other freshwater
+condition -A lack of cyanobacterial/green photosynthetic growth, as seen
+with the sole occurrence of diatoms in 1001 -An increase in orange
+growth, perhaps iron-oxidizing bacteria</p>
 <p>Overall, there is a qualitative effect of climate change (sea water
 rise and temperature increase) on the microbial communities of
 Sackville’s Waterfowl park. These changes are important to take into

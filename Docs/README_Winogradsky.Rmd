@@ -83,7 +83,7 @@ example:
 https://docs.google.com/spreadsheets/d/1rlj03Q_wq83qlyiY7mXq8BK6C-L0Ko799JsyhfA1TGI/edit#gid=0
 Use standard variable names for MetaDataCatalog
 
-##Load Packages
+### Load Packages
 ```{r packages, include = FALSE}
 
 library(tidyverse) #core packages from Tidyverse
@@ -91,7 +91,7 @@ library(googledrive) #access to GoogleDrive
 library(googlesheets4)
 ```
 
-##Importing MetaData
+### Importing MetaData
 ```{r load Catalog direct from googlesheet, results = "hide"}
 googlesheets4::gs4_deauth()
 
@@ -139,24 +139,26 @@ In our document folder:
 Output from knit .Rmd, Figures and tables produced from analysis.
 Do not generate swarms of superfluous data exploration figures.
 
-###Discussion
+## Discussion
 
-#Voltage and Oxygen
+### Voltage and Oxygen
 Voltage and oxygen show a relationship in microbial communities (Christwardana et al., 2021). The relationship has been seen to be positively exponentially proportional between the two factors (Christwardana et al., 2021). We found a negative relationship between voltage and oxygen for 1001_W and 1002, and no significant relationship in any of the other columns. We would predict a positive relationship in 1003 and 1004, due to seawater being a good conductor in comparison to freshwater, increasing the voltage (Christwardana et al., 2021). However, examining the data points for column 1004 in particular does not seem to show an expected linear relationship-- some points are clearly absent in the middle. This could be caused by the variability in the voltage measurements, and the differences in the relationship between depth and oxygen (potentially in two phases) and depth and voltage (linear relationship) in column 1004. In contrast, the 0 slope of voltage in all other columns likely makes predicting a relationship between voltage and oxygen difficult.
 
-#Niches
+### Niches
 Over the course of the four week period, the microbial community shifted. This is due to niche differences between different microbes (Esteban et al., 2015). Due to increases in depth, and therefore light, oxygen, and voltage, communities change according to depth (Esteban et al., 2015). Roughly, the surface sees a higher occurrence of cyanobacteria and other phytoplankton that rely on high light levels for photosynthesis. Below that, heterotrophic bacteria use the byproducts of photosynthesis to fuel their metabolism, which causes a chain reaction between layers in the Winogradsky column. As oxygen is finally used up in the bottom layers, sulfate-reducing bacteria take over, surviving anoxic conditions.In 1001 especially, the layers are visible in the high light side. 
 This could potentially be caused by the differences in light treatment for the 1001 column. While the other three columns were in identical light conditions, 1001 had high light (window) and low light (classroom) sides. Differences in layers as well as in microbes visible in slides were found qualitatively between 1001_W and 1001_C. This may suggest that light was an important factor affecting community composition, even within the same temperature and salinity treatment.
 
-#Microbial Diversity under Climate Change
+### Microbial Diversity under Climate Change
 Between our freshwater and seawater conditions, there were some obvious changes.
 In the seawater condition, we saw:
+
 -Iron come out of solution 
 -A loss a diversity 
 -A loss of an active microbial community in the water column
 -A darkening of the sediment 
 
 Between the temperature conditions, we saw:
+
 -A decrease in microbial diversity, even in the other freshwater condition
 -A lack of cyanobacterial/green photosynthetic growth, as seen with the sole occurrence of diatoms in 1001
 -An increase in orange growth, perhaps iron-oxidizing bacteria
