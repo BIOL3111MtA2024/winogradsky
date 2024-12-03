@@ -1,6 +1,11 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: "README_Winogradsky"
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_float: yes
+    df_print: paged
 ---
 
 # Microcosms in Winogradsky Columns
@@ -12,7 +17,10 @@ Winogradsky columns are clear cylinders filled with sediment and water (Esteban 
 ## Methods
 
 To investigate the potential effects of climate change induced seawater incursion into the Waterfowl Park, we created four Winogradsky column conditions. Sediment from the Waterfowl park was collected and stirred to form a slurry before being added to each of the four columns. The sediment was allowed to settle for several days, after which the Waterfowl water was decanted from two of four columns. The decanted water was replaced with either seawater collected from a local beach, or artificial seawater prepared in the laboratory. Three of four columns were kept in a 24 degree celcius incubator with a 12:12 day:night cycle, and the fourth remained at room temperature in a window exposed to natural light. 
-Thus, the four treatment groups were: 
+
+Thus, the four treatment groups were:
+
+
 1) Waterfowl Park sediment and water at room temperature ( ~ 20 °C)
 2) Waterfowl Park sediment and water (24°C)
 3) Waterfowl Park sediment with addition of seawater (24°C)
