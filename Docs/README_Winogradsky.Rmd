@@ -53,7 +53,7 @@ For data analysis, RStudio version 2023.06.01 and R version 4.4.1 were used.
 
 ## Repo content information
 
-Use the space below to summarize the structure of the repository with a description of each folder, as applicable.
+The repository Winogradsky is organized into folders. Within documents, you will find photos and this README file. To find code, there are separate rmd. for each analysis. 
 
 ### MetaDataCatalog
 URL for MetaDataCatalog, or MetaDataCatalog filename

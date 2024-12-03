@@ -1,5 +1,5 @@
 ---
-title: "Oxygen & Voltage Gradients"
+title: "Oxygen&Voltage_gradients"
 output:
   html_document:
     df_print: paged
@@ -8,7 +8,7 @@ output:
 # Introduction
 
 This rmd. file imports oxygen and voltage data from Google sheet
-Data is used to plot oxygen and voltage gradient maps of the winogradsky column 
+Data is used to plot a oxygen and voltage gradient map of the winogradsky column 
 Exponential and linear models were used to analyze data
 
 ## Loading Packages 
@@ -55,6 +55,7 @@ Gradients <- left_join(x = CleanData_Oxygen, y = CleanData_Voltage, by = c("Samp
 
 
 ## Oxygen Gradient Plot
+
 ```{r Oxygen gradients}
 ggplot(data = CleanData_Oxygen) +
 geom_point(aes(y = DO_µg_L, x = Depth_cm)) + 
@@ -66,7 +67,7 @@ geom_point(aes(y = DO_µg_L, x = Depth_cm)) +
   theme_bw()
 #+ scale_y_continuous(limits = c(0, 300))
 ```
-##Fitting an Exponential Decay Model
+
 ```{r decay fits}
 #define exponential decay function for data fitting.
 exp_decay <- function(x, i, mu){y = i * exp(mu * x)}
@@ -107,6 +108,7 @@ unnest(cols = c(DecayTidy)) |>
 ```
 
 ## Voltage Gradient Plot
+
 ```{r Plotting Voltage Gradients in water at 10 seconds}
 
 ggplot(data = Gradients) +
@@ -116,7 +118,7 @@ ggplot(data = Gradients) +
   theme_bw()
 ```
 
-##Fitting a Linear Model
+
 ```{r Plotting With a linear fit}
 
   Linear_fit <- Gradients %>% 
@@ -166,6 +168,7 @@ Linear_fit_param |>
 ```
 
 ## Oxygen and Voltage Gradients
+
 ```{r oxygen and voltage gradients}
 
     Oxygen <- ggplot(data = Gradients) +
