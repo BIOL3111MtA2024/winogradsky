@@ -7,7 +7,21 @@ output: html_notebook
 
 ## Summary
 
-Winogradsky columns are clear cylinders filled with sediment and water (Esteban et al., 2015). When incubated with light, they grow communities of microorganisms with spacial distribution differences (Esteban et al., 2015). Layers in the column are organized by the different metabolic strategies of microorganisms (Esteban et al., 2015). Winogradsky columns are model systems for studying microbial communities. This project seeks to use the columns to investigate the effect of climate change on the microbial community distributions in Sackville, New Brunswick. By collecting sediment from the Sackville Waterfowl park, the effects of salinity and temperature associated with climate change will be monitored over a 4-week period. This will be done visually, and with dissolved oxygen and voltage gradient measurements. It is hypothesized that there will be changes in microbe abundance, diversity, and community composition with climate change, which will be simulated by changes in temperature and salinity. 
+Winogradsky columns are clear cylinders filled with sediment and water (Esteban et al., 2015). When incubated with light, they grow communities of microorganisms with spacial distribution differences (Esteban et al., 2015). Layers in the column are organized by the different metabolic strategies of microorganisms (Esteban et al., 2015). Winogradsky columns are model systems for studying microbial communities. This project seeks to use the columns to investigate the effect of climate change on the microbial community distributions in Sackville, New Brunswick. By collecting sediment from the Sackville Waterfowl park, the effects of salinity and temperature associated with climate change will be monitored over a 4-week period. This will be done visually, and with dissolved oxygen and voltage gradient measurements. It is hypothesized that there will be changes in microbe abundance, diversity, and community composition with changes in temperature and salinity used approximate some of the potential effects of climate change. 
+
+## Methods
+
+To investigate the potential effects of climate change induced seawater incursion into the Waterfowl Park, we created four Winogradsky column conditions. Sediment from the Waterfowl park was collected and stirred to form a slurry before being added to each of the four columns. The sediment was allowed to settle for several days, after which the Waterfowl water was decanted from two of four columns. The decanted water was replaced with either seawater collected from a local beach, or artificial seawater prepared in the laboratory. Three of four columns were kept in a 24 degree celcius incubator with a 12:12 day:night cycle, and the fourth remained at room temperature in a window exposed to natural light. 
+Thus, the four treatment groups were: 
+1) Waterfowl Park sediment and water at room temperature ( ~ 20 °C)
+2) Waterfowl Park sediment and water (24°C)
+3) Waterfowl Park sediment with addition of seawater (24°C)
+4) Waterfowl Park sediment with addition of artificail seawater (24°C)
+
+
+The conditions were based off the Representative Concentration Pathway 8.5 (RCP) modeled by the Intergovernmental Panel on Climate Change. This scenario states that by 2100, sea levels will have risen by 0.84 m and temperatures by 4.4°C (Bush & Lemmen, 2019). 
+
+Photos were taken of the columns weekly to qualitatively measure progress in layer differentiation. Oxygen and voltage measurements were completed at the end of 4 weeks. Small holes were created in the side of each column and their depth was measured. One sampling hole was in the head water, and three within the sediment of each column, attempting to sample from different layers if they were apparent. Volatge was measured using either the column water or a metal tap as ground, and either as the max observed (+/-) value over ten seconds, or the reading at exactly 10 seconds of measurement. Oxygen measurements were taken from the same sampling ports. Finally, microscope slides were created from samples taken at each depth for additional qualitative analysis of community composition. 
 
 ## Highly Qualified Personnel
 
@@ -103,7 +117,7 @@ In our code folder:
 -There is the oxygen gradients (Oxygen_gradients.rmd & html)
 -There is the joined gradients of oxygen and voltage (Gradients.rmd & html)
 -There is slide photos importing (Slide_Photos.rmd & html)
--There is a importation file (FileImportFunctions.rmd)
+-There is a importation template file (FileImportFunctions.rmd)
 
 ### Docs
 
@@ -125,6 +139,7 @@ Voltage and oxygen show a relationship in microbial communities (Christwardana e
 
 #Niches
 Over the course of the four week period, the microbial community shifted. This is due to niche differences between different microbes (Esteban et al., 2015). Due to increases in depth, and therefore light, oxygen, and voltage, communities change according to depth (Esteban et al., 2015). Roughly, the surface sees a higher occurrence of cyanobacteria and other phytoplankton that rely on high light levels for photosynthesis. Below that, heterotrophic bacteria use the byproducts of photosynthesis to fuel their metabolism, which causes a chain reaction between layers in the Winogradsky column. As oxygen is finally used up in the bottom layers, sulfate-reducing bacteria take over, surviving anoxic conditions.In 1001 especially, the layers are visible in the high light side. 
+This could potentially be caused by the differences in light treatment for the 1001 column. While the other three columns were in identical light conditions, 1001 had high light (window) and low light (classroom) sides. Differences in layers as well as in microbes visible in slides were found qualitatively between 1001_W and 1001_C. This may suggest that light was an important factor affecting community composition, even within the same temperature and salinity treatment.
 
 #Microbial Diversity under Climate Change
 Between our freshwater and seawater conditions, there were some obvious changes.
@@ -142,6 +157,8 @@ Between the temperature conditions, we saw:
 Overall, there is a qualitative effect of climate change (sea water rise and temperature increase) on the microbial communities of Sackville's Waterfowl park. These changes are important to take into consideration as the threats of climate change on a flood-vulnerable town like Sackville are very real. 
 
 ## Bibliography
+
+Bush, E., & Lemmen, D. S. (2019). Canada’s Changing Climate Report (p. 444). Government of Canada. https://changingclimate.ca/CCCR2019/
 
 Christwardana, M., Yoshi, L. A., Setyonadi, I., & Maulana, M. R. (2021). Correlation between voltage, dissolved oxygen, and power density of yeast microbial fuel cell in different environmental waters as catholyte. 050001. https://doi.org/10.1063/5.0045395
 
