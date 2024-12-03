@@ -115,7 +115,6 @@ RawData <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hN
 In our code folder:
 -There is the voltage gradients (Voltage_gradients.rmd & html)
 -There is the oxygen gradients (Oxygen_gradients.rmd & html)
--There is the joined gradients of oxygen and voltage (Gradients.rmd & html)
 -There is slide photos importing (Slide_Photos.rmd & html)
 -There is a importation template file (FileImportFunctions.rmd)
 
