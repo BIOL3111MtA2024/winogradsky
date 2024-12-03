@@ -109,7 +109,7 @@ unnest(cols = c(DecayTidy)) |>
 ```{r Plotting Voltage Gradients in water at 10 seconds}
 
 ggplot(data = Gradients) +
-  geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) + 
+  geom_point(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) + 
   facet_grid(cols = vars(Sample)) + 
   theme_bw()
 ```
@@ -121,13 +121,13 @@ ggplot(data = Gradients) +
   group_by(Sample) %>%
   group_modify(~ {
 
-  linear <- lm(Voltage_Water_10s ~ Depth_cm, data = .x, na.action = na.exclude)
+  linear <- lm(Voltage_Water_10s_mv ~ Depth_cm, data = .x, na.action = na.exclude)
   augment(linear, data = .x)}) %>%
   ungroup()
 
 
   Linear_fit |>   
-    ggplot(aes(x = Depth_cm, y = Voltage_Water_10s)) +
+    ggplot(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) +
     geom_point() +
     geom_line(aes(y = .fitted)) +
     #Showing residuals
@@ -145,7 +145,7 @@ ggplot(data = Gradients) +
  Linear_fit_results <- Linear_fit |>
    group_by(Sample) |>
    group_modify(~ {
-    linear_model <- lm(Voltage_Water_10s ~ Depth_cm, data = .x)
+    linear_model <- lm(Voltage_Water_10s_mv ~ Depth_cm, data = .x)
     tidy_model <- tidy(linear_model)  
     tidy_model$Sample <- unique(.x$Sample)  
     return(tidy_model)  
@@ -174,7 +174,7 @@ Linear_fit_results |>
       theme_bw()
 
     Voltage <- ggplot(data = Gradients) +
-      geom_point(aes(x = Depth_cm, y = Voltage_Water_10s)) +
+      geom_point(aes(x = Depth_cm, y = Voltage_Water_10s_mv)) +
       facet_grid(cols = vars(Sample)) + 
       theme_bw()
       
