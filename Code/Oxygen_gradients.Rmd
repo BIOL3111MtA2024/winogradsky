@@ -198,16 +198,17 @@ ggplot(data = Gradients) +
       theme_bw()
 
 ```
+
 ```{r Oxygen and Voltage param}
 
 Oxygen_Voltage <- Gradients %>%
   group_by(Sample) %>%  # Group by Sample
   group_modify(~ {
-    model <- lm(Voltage_Water_10s_mv ~ Depth_cm, data = .x)
+    model <- lm(Voltage_Water_10s_mv ~ DO_µg_L, data = .x)
     tidy(model) })
 
 Oxygen_Voltage_filtered <- Oxygen_Voltage %>%
-  filter(term == "Depth_cm") %>%  
+  filter(term == "DO_µg_L") %>%  
   select(Sample, estimate, std.error, p.value) 
  
 Oxygen_Voltage_filtered %>%
