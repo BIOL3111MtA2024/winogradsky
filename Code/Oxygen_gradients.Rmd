@@ -164,7 +164,7 @@ Linear_fit_results |>
 
 ```
 
-## Oxygen vs Voltage Graph
+## Oxygen vs Voltage Graphs
 
 ```{r oxygen vs voltage}
 
@@ -181,6 +181,17 @@ Linear_fit_results |>
   print(Oxygen/Voltage)
   
   
+```
+
+
+```{r Oxygen and Voltage relationship}
+
+ggplot(data = Gradients) +
+      geom_point(aes(x = DO_µg_L, y = Voltage_Water_10s_mv)) +
+      geom_smooth(aes(x = DO_µg_L, y = Voltage_Water_10s_mv), method = "lm") +
+      facet_grid(cols = vars(Sample)) + 
+      theme_bw()
+
 ```
 
 
