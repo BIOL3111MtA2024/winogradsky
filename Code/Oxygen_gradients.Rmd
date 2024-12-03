@@ -101,7 +101,7 @@ unnest(cols = c(DecayTidy)) |>
  select(-c(data, DecayFit, DecayParam, DecayPredict)) |>
   select(-c(statistic)) |>
   pivot_wider(id_cols = Sample, names_from = term, values_from = c(estimate, std.error, p.value)) |>
-  kable()
+  kable(digits=4)
 ```
 
 ## Voltage Gradient Plot
@@ -158,7 +158,7 @@ Linear_fit_param <- Linear_fit_param |>
 Linear_fit_param |>
   select(-c(statistic)) |>
   pivot_wider(id_cols = Sample, names_from = term, values_from = c(estimate, std.error, p.value)) |>
-  kable()
+  kable(digits=4)
  
 ```
 
@@ -189,6 +189,22 @@ ggplot(data = Gradients) +
       geom_smooth(aes(x = DO_µg_L, y = Voltage_Water_10s_mv), method = "lm") +
       facet_grid(cols = vars(Sample)) + 
       theme_bw()
+
+```
+```{r Oxygen and Voltage param}
+
+Oxygen_Voltage <- Gradients %>%
+  group_by(Sample) %>%  # Group by Sample
+  group_modify(~ {
+    model <- lm(Voltage_Water_10s_mv ~ Depth_cm, data = .x)
+    tidy(model) })
+
+Oxygen_Voltage_filtered <- Oxygen_Voltage %>%
+  filter(term == "Depth_cm") %>%  
+  select(Sample, estimate, std.error, p.value) 
+ 
+Oxygen_Voltage_filtered %>%
+kable(digits = 4)
 
 ```
 
