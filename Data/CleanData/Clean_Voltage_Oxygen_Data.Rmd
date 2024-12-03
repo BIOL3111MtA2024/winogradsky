@@ -1,0 +1,37 @@
+---
+title: "Clean Oxygen and Voltage data"
+output: html_notebook
+---
+
+##Load Packages
+```{r packages, include = FALSE}
+
+library(tidyverse) #core packages from Tidyverse
+library(googledrive) #access to GoogleDrive
+library(googlesheets4)
+```
+
+```{r load Catalog direct from googlesheet CleanData_Oxygen, results = "hide"}
+
+googlesheets4::gs4_deauth()
+
+CleanData_Oxygen <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=842906991#gid=842906991", "CleanData_Oxygen") 
+```
+```{r load Catalog direct from googlesheet CleanData_Voltage, results = "hide"}
+
+googlesheets4::gs4_deauth()
+
+CleanData_Voltage <- googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1hNakCyqPsTNRFpf1lGjoBQ-papyZ6xHKT6mcvh3LMb8/edit?pli=1&gid=842906991#gid=842906991", "CleanData_Voltage")
+```
+
+
+
+
+
+
+
+
+
+
+
+
