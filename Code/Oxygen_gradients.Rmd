@@ -94,7 +94,8 @@ O2_nest |>
   geom_point(aes(x = Depth_cm, y = DO_µg_L)) +
   geom_line(aes(x = Depth_cm, y = .fitted)) +
   geom_point(aes(x = Depth_cm, y = .resid), colour = "red") +
-  labs( title= "Oxygen Decay Fits", caption= "Figure 2. Dissolved Oxygen (DO) (µg/L) measured in four Winogradsky colums at 5 depths (cm), fitted to an exponential decay model with residuals") +
+  labs( title= "Oxygen Decay Fits", caption= "Figure 2. Dissolved Oxygen (DO) (µg/L) measured in four Winogradsky colums at 5 depths (cm)
+fitted to an exponential decay model with residuals") +
   facet_grid(cols = vars(unlist(Sample))) +
   theme_bw()
 ```
@@ -137,7 +138,8 @@ ggplot(data = Gradients) +
     #Showing residuals
     #geom_point(aes(x = Depth_cm, y = .resid), colour = "red") +
     geom_segment(aes(xend = Depth_cm, yend = .fitted), color = "red") +
-    labs( title= "Voltage Gradient Fits", caption= "Figure 4. Voltage in water at 10 seconds (mv) measured in four Winogradsky colums at 5 depths (cm), fitted to a linear model with residuals") +
+    labs( title= "Voltage Gradient Fits", caption= "Figure 4. Voltage in water at 10 seconds (mv) measured in four Winogradsky colums at 5 depths (cm)
+fitted to a linear model with residuals") +
     facet_grid(cols = vars(unlist(Sample))) +
     theme_bw()
 
