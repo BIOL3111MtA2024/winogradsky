@@ -142,15 +142,9 @@ ggplot(data = Gradients) +
 
 ```{r Examining linear fit parameters}
  
-<<<<<<< HEAD
 Linear_fit_param <- Linear_fit |>
   group_by(Sample) |>
   group_modify(~ {
-=======
- Linear_fit_results <- Linear_fit |>
-   group_by(Sample) |>
-   group_modify(~ {
->>>>>>> 3aa3cf52183a46ab8b522112e7770a3bf6725159
     linear_model <- lm(Voltage_Water_10s_mv ~ Depth_cm, data = .x)
     tidy_model <- tidy(linear_model)  
     tidy_model$Sample <- unique(.x$Sample)  # Ensure Sample column is added
@@ -168,11 +162,7 @@ Linear_fit_param |>
  
 ```
 
-<<<<<<< HEAD
 ## Oxygen and Voltage Gradients
-=======
-## Oxygen vs Voltage Graphs
->>>>>>> 3aa3cf52183a46ab8b522112e7770a3bf6725159
 
 ```{r oxygen and voltage gradients}
 
