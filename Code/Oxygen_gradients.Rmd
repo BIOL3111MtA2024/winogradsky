@@ -1,6 +1,11 @@
 ---
 title: "Oxygen & Voltage Gradients"
-output: html_notebook
+output: 
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_float: yes
+    df_print: paged
 ---
 
 # Introduction
@@ -63,7 +68,7 @@ geom_point(aes(y = DO_µg_L, x = Depth_cm)) +
   theme_bw()
 #+ scale_y_continuous(limits = c(0, 300))
 ```
-##Fitting an Exponential Decay Model
+## Fitting an Exponential Decay Model
 ```{r decay fits}
 #define exponential decay function for data fitting.
 exp_decay <- function(x, i, mu){y = i * exp(mu * x)}
@@ -113,7 +118,7 @@ ggplot(data = Gradients) +
   theme_bw()
 ```
 
-##Fitting a Linear Model
+## Fitting a Linear Model
 ```{r Plotting With a linear fit}
 
   Linear_fit <- Gradients %>% 
